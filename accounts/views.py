@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from .forms import UserRegistrationForm
+from .forms import UserRegistrationForm, UserLoginForm
 
 
 from django.views.generic.edit import FormView
 from django.views.generic.base import TemplateView
+from django.contrib.auth.views import LoginView
 
 
 class RegistrationView(FormView):
@@ -19,3 +20,9 @@ class RegistrationView(FormView):
 
 class RegistrationSuccessView(TemplateView):
     template_name = 'accounts/register_success.html'
+
+
+class LoginView(LoginView):
+    template_name = 'accounts/login.html'
+    authentication_form = UserLoginForm
+    redirect_authenticated_user = True

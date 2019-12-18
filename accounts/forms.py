@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 
 
 User = get_user_model()
@@ -67,3 +68,21 @@ class UserRegistrationForm(forms.ModelForm):
         if commit:
             instance.save()
         return instance
+
+
+class UserLoginForm(AuthenticationForm):
+    username = forms.CharField(
+        label='',
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Email'
+        })
+    )
+
+    password = forms.CharField(
+        label='',
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Password'
+        })
+    )
