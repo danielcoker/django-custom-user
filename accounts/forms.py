@@ -57,7 +57,7 @@ class UserRegistrationForm(forms.ModelForm):
     def clean_password_confirmation(self):
         cd = self.cleaned_data
         if cd['password'] != cd['password_confirmation']:
-            raise forms.ValidationError('Passwords don\t match')
+            raise forms.ValidationError('Passwords don\'t match')
         return cd['password_confirmation']
     
 
@@ -67,4 +67,3 @@ class UserRegistrationForm(forms.ModelForm):
         if commit:
             instance.save()
         return instance
-        
