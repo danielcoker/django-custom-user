@@ -7,6 +7,8 @@ from django.views.generic.edit import FormView
 from django.views.generic.base import TemplateView
 from django.contrib.auth.views import LoginView
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 class RegistrationView(FormView):
     template_name = 'accounts/register.html'
@@ -26,3 +28,7 @@ class LoginView(LoginView):
     template_name = 'accounts/login.html'
     authentication_form = UserLoginForm
     redirect_authenticated_user = True
+
+
+class DashboardView(LoginRequiredMixin, TemplateView):
+    template_name = 'accounts/dashboard.html'
