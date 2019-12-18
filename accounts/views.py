@@ -4,6 +4,7 @@ from .forms import UserRegistrationForm
 
 
 from django.views.generic.edit import FormView
+from django.views.generic.base import TemplateView
 
 
 class RegistrationView(FormView):
@@ -14,3 +15,7 @@ class RegistrationView(FormView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
+
+
+class RegistrationSuccessView(TemplateView):
+    template_name = 'accounts/register_success.html'
