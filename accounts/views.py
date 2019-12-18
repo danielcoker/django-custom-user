@@ -5,7 +5,7 @@ from .forms import UserRegistrationForm, UserLoginForm
 
 from django.views.generic.edit import FormView
 from django.views.generic.base import TemplateView
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -32,3 +32,7 @@ class LoginView(LoginView):
 
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'accounts/dashboard.html'
+
+
+class UserLogoutView(LoginRequiredMixin, LogoutView):
+    pass
